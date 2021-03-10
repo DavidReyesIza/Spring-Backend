@@ -6,4 +6,7 @@ import com.bolsadeideas.springboot.backend.apirest.models.entity.Cliente;
 
 public interface IClienteDao extends CrudRepository<Cliente, Long>{
 
+	
+	public Cliente findByEmail(String email);
+	
 }

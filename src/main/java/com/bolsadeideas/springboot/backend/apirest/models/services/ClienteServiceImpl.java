@@ -75,4 +75,10 @@ public class ClienteServiceImpl implements IClienteService {
 		return productoDao.findByNombreContainingIgnoreCase(term);
 	}
 
+	@Override
+	public Cliente findbyEmail(String email) {
+		
+		return clienteDao.findByEmail(email);
+	}
+
 }

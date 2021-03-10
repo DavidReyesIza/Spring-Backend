@@ -37,6 +37,33 @@ public class ClienteRestController {
 		return clienteService.findAll();
 	}
 	
+	@PutMapping("/validar")
+	public ResponseEntity<?> validar(@Valid @RequestBody Cliente cliente, BindingResult result) {
+	
+		
+		
+		Cliente clienteActual = null;
+		Map<String, Object> response = new HashMap<>();
+		
+			try {
+			clienteActual = clienteService.findbyEmail(cliente.getEmail());
+			System.out.println("uenas " + clienteActual);
+			if(clienteActual.getPassword().equals(cliente.getPassword()) ) {
+				response.put("mensaje", "Iniciado Correctamente");
+			} else {
+				response.put("mensaje", "Correo o Contraseña invalida");
+			}
+		} catch (Exception e) {
+			response.put("mensaje", "Error Inesperado");
+			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.FAILED_DEPENDENCY);
+		}
+		
+		return new ResponseEntity<Map<String, Object>>(response,HttpStatus.OK);
+		
+	
+	}
+	
+	
 	@GetMapping("/clientes/{id}")
 	public ResponseEntity<?> show(@PathVariable Long id) {
 		
@@ -61,6 +88,8 @@ public class ClienteRestController {
 	
 	@PostMapping("/clientes")
 	public ResponseEntity<?> create(@Valid @RequestBody Cliente cliente, BindingResult result) {
+		
+		
 		
 		Cliente clienteNew = null;
 		Map<String, Object> response = new HashMap<>();

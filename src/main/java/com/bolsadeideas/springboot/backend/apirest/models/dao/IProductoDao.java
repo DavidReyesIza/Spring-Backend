@@ -14,6 +14,7 @@ public interface IProductoDao extends CrudRepository<Producto, Long> {
 	public List<Producto> findByNombre(String term);
 	
 	
+	
 	public List<Producto> findByNombreContainingIgnoreCase(String term);
 	
 	

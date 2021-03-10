@@ -12,6 +12,8 @@ public interface IClienteService {
 	
 	public Cliente findById(Long id);
 	
+	public Cliente findbyEmail(String Email);
+	
 	public Cliente save(Cliente cliente);
 	
 	public void delete(Long id);
@@ -23,6 +25,8 @@ public interface IClienteService {
 	public void deleteFacturaById(Long id);
 	
 	public List<Producto> findProductoByNombre(String term);
+	
+	
 	
 	
 	

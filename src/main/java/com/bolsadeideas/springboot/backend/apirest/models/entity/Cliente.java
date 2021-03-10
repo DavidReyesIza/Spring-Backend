@@ -44,9 +44,16 @@ public class Cliente implements Serializable {
 	@Column(nullable=false, unique=true)
 	private String email;
 	
+	
+	private String password;
+	
 	@Column(name="create_at")
 	@Temporal(TemporalType.DATE)
 	private Date createAt;
+	
+	@JsonIgnoreProperties(value= {"cliente","hibernateLazyInitializer","hander"})
+	@OneToMany(fetch = FetchType.LAZY,mappedBy = "cliente", cascade = CascadeType.ALL)
+	private List<Producto> productos;
 	
 	@JsonIgnoreProperties(value= {"cliente","hibernateLazyInitializer","hander"})
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "cliente", cascade = CascadeType.ALL)
@@ -106,6 +113,26 @@ public class Cliente implements Serializable {
 	}
 	
 	
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+
+	public List<Producto> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(List<Producto> productos) {
+		this.productos = productos;
+	}
+
+
 
 	private static final long serialVersionUID = 1L;
 }
