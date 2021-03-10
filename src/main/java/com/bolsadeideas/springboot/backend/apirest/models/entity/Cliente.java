@@ -43,7 +43,7 @@ public class Cliente implements Serializable {
 	@Email(message="no es una dirección de correo bien formada")
 	@Column(nullable=false, unique=true)
 	private String email;
-	
+	//comment
 	
 	private String password;
 	
