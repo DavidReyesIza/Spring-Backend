@@ -32,9 +32,10 @@ public class Producto implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date createAt;
 	
-	@JsonIgnoreProperties(value= {"productos","hibernateLazyInitializer","handler"})
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Cliente cliente;
+	private Boolean estado;
+	
+	
+	private Long clienteId;
 
 	@PrePersist
 	public void prePersist() {
@@ -74,7 +75,26 @@ public class Producto implements Serializable {
 	}
 	
 	
+
+	public Long getClienteId() {
+		return clienteId;
+	}
+
+	public void setClienteId(Long clienteId) {
+		this.clienteId = clienteId;
+	}
 	
+
+
+
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
+
 
 	/**
 	 * 

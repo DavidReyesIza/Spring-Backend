@@ -51,11 +51,9 @@ public class Cliente implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date createAt;
 	
-	@JsonIgnoreProperties(value= {"cliente","hibernateLazyInitializer","hander"})
-	@OneToMany(fetch = FetchType.LAZY,mappedBy = "cliente", cascade = CascadeType.ALL)
-	private List<Producto> productos;
+
 	
-	@JsonIgnoreProperties(value= {"cliente","hibernateLazyInitializer","hander"})
+	@JsonIgnoreProperties(value= {"cliente","hibernateLazyInitializer","handler"})
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "cliente", cascade = CascadeType.ALL)
 	private List<Factura> facturas;
 
@@ -122,15 +120,6 @@ public class Cliente implements Serializable {
 		this.password = password;
 	}
 
-
-
-	public List<Producto> getProductos() {
-		return productos;
-	}
-
-	public void setProductos(List<Producto> productos) {
-		this.productos = productos;
-	}
 
 
 

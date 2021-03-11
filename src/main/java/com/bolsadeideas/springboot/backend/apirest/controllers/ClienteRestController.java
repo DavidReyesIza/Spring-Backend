@@ -50,6 +50,7 @@ public class ClienteRestController {
 			System.out.println("uenas " + clienteActual);
 			if(clienteActual.getPassword().equals(cliente.getPassword()) ) {
 				response.put("mensaje", "Iniciado Correctamente");
+				response.put("cliente", clienteActual);
 			} else {
 				response.put("mensaje", "Correo o Contraseña invalida");
 			}

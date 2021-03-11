@@ -34,5 +34,11 @@ public class ProductoServiceImpl implements IProductoService {
 		
 	}
 
+	@Override
+	public Producto findById(Long id) {
+	
+		return productoDao.findById(id).orElse(null);
+	}
+
 
 }

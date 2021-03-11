@@ -13,11 +13,11 @@ INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Tornado', 'Roe
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Jade', 'Doe', 'jane.doe@gmail.com', '2018-03-06');
 
 
-INSERT INTO productos (nombre, precio, create_at) VALUES('Panasonic Pantalla LCD', 259990, NOW());
-INSERT INTO productos (nombre, precio, create_at) VALUES('Sony Camara digital DSC-W320B', 123490, NOW());
-INSERT INTO productos (nombre, precio, create_at) VALUES('Apple iPod shuffle', 1499990, NOW());
-INSERT INTO productos (nombre, precio, create_at) VALUES('Sony Notebook Z110', 37990, NOW());
-INSERT INTO productos (nombre, precio, create_at) VALUES('Hewlett Packard Multifuncional F2280', 69990, NOW());
+INSERT INTO productos (nombre, precio, create_at,  clienteId ,estado ) VALUES('Panasonic Pantalla LCD', 259990,  NOW(),1, "true");
+INSERT INTO productos (nombre, precio,  clienteId ,estado, create_at) VALUES('Sony Camara digital DSC-W320B', 123490, 2, "true", NOW());
+INSERT INTO productos (nombre, precio, clienteId ,estado, create_at) VALUES('Apple iPod shuffle', 1499990, 3, "true",  NOW());
+INSERT INTO productos (nombre, precio,  clienteId ,estado, create_at) VALUES('Sony Notebook Z110', 37990, 2, "true",  NOW());
+INSERT INTO productos (nombre, precio,  clienteId ,estado, create_at) VALUES('Hewlett Packard Multifuncional F2280', 2, "true",  69990, NOW());
 INSERT INTO productos (nombre, precio, create_at) VALUES('Bianchi Bicicleta Aro 26', 69990, NOW());
 INSERT INTO productos (nombre, precio, create_at) VALUES('Mica Comoda 5 Cajones', 299990, NOW());
 
