@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bolsadeideas.springboot.backend.apirest.models.entity.Cliente;
 import com.bolsadeideas.springboot.backend.apirest.models.services.IClienteService;
 
+import hash.Hash;
+
 @CrossOrigin(origins = { "http://localhost:4400" })
 @RestController
 @RequestMapping("/api")
@@ -47,15 +49,15 @@ public class ClienteRestController {
 		
 			try {
 			clienteActual = clienteService.findbyEmail(cliente.getEmail());
-			System.out.println("uenas " + clienteActual);
-			if(clienteActual.getPassword().equals(cliente.getPassword()) ) {
-				response.put("mensaje", "Iniciado Correctamente");
+			String nuevoPass = Hash.sha1 (cliente.getPassword());
+			if(clienteActual.getPassword().equals(nuevoPass) ) {
+				response.put("ok", "true");
 				response.put("cliente", clienteActual);
 			} else {
 				response.put("mensaje", "Correo o Contraseña invalida");
 			}
 		} catch (Exception e) {
-			response.put("mensaje", "Error Inesperado");
+			response.put("mensaje", "Ese usuario no existe");
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.FAILED_DEPENDENCY);
 		}
 		
@@ -107,14 +109,17 @@ public class ClienteRestController {
 		}
 		
 		try {
+			
+			String nuevoPass = Hash.sha1 (cliente.getPassword());
+			cliente.setPassword(nuevoPass);
 			clienteNew = clienteService.save(cliente);
 		} catch(DataAccessException e) {
-			response.put("mensaje", "Error al realizar el insert en la base de datos");
+			response.put("mensaje", "Ese correo ya esta registrado");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
-		response.put("mensaje", "El cliente ha sido creado con éxito!");
+		response.put("ok", "true");
 		response.put("cliente", clienteNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}

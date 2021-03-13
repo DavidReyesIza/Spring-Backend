@@ -27,6 +27,8 @@ public class Producto implements Serializable {
 
 	private String nombre;
 	private Double precio;
+	
+	private Long stock;
 
 	@Column(name = "create_at")
 	@Temporal(TemporalType.DATE)
@@ -86,6 +88,14 @@ public class Producto implements Serializable {
 	
 
 
+
+	public Long getStock() {
+		return stock;
+	}
+
+	public void setStock(Long stock) {
+		this.stock = stock;
+	}
 
 	public Boolean getEstado() {
 		return estado;
