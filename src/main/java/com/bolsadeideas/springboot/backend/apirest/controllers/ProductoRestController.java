@@ -25,7 +25,7 @@ import com.bolsadeideas.springboot.backend.apirest.models.entity.Cliente;
 import com.bolsadeideas.springboot.backend.apirest.models.entity.Producto;
 import com.bolsadeideas.springboot.backend.apirest.models.services.IProductoService;
 
-@CrossOrigin(origins = { "http://localhost:4400" })
+@CrossOrigin(origins = { "http://localhost:4400","*" })
 @RestController
 @RequestMapping("/api")
 public class ProductoRestController {

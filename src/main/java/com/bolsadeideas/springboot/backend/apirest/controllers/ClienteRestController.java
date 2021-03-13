@@ -26,7 +26,7 @@ import com.bolsadeideas.springboot.backend.apirest.models.services.IClienteServi
 
 import hash.Hash;
 
-@CrossOrigin(origins = { "http://localhost:4400" })
+@CrossOrigin(origins = { "http://localhost:4400" ,"*" })
 @RestController
 @RequestMapping("/api")
 public class ClienteRestController {
